@@ -2,7 +2,19 @@ const express = require('express')
 const res = require('express/lib/response')
 const app = express()
 const path = require('path')
-const mongoose = require('mongose')
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://127.0.0.1:27017/shopApp', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("MONGO CONNECTION OPEN!!!")
+    })
+    .catch(err => {
+        console.log("OH NO MONGO CONNECTION ERROR!!!!")
+        console.log(err)
+    })
+
+
+
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
